@@ -1,0 +1,113 @@
+# ============================================================================
+# Nearfold — Render Blueprint
+#
+# One-click deploy of the Nearfold backend to Render's free tier.
+#
+# Provisions:
+#   - 1 web service (Node 20, Singapore region — closest to Indian users)
+#
+# What you bring (DATABASE_URL):
+#   - A Postgres + PostGIS database. Render does NOT include free Postgres
+#     anymore, so this blueprint expects you to use Neon's free tier (or any
+#     hosted Postgres that supports PostGIS).
+#     → https://neon.tech (sign up, create a project, run
+#       `CREATE EXTENSION postgis;` in the SQL Editor, copy the connection
+#       string into the DATABASE_URL env var on Render).
+#
+# After deploy:
+#   - Render runs `pnpm db:migrate` as part of the build, so the schema is
+#     applied automatically once DATABASE_URL is set.
+#   - The remaining third-party credentials (Firebase, Razorpay, Cloudinary,
+#     Google Maps) are marked `sync: false` — set them in Render's dashboard
+#     when you're ready to enable each feature.
+#
+# Spec reference: https://render.com/docs/blueprint-spec
+# ============================================================================
+
+services:
+  - type: web
+    name: nearfold-api
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    rootDir: .
+    autoDeploy: true
+    healthCheckPath: /health
+
+    # Build:
+    # 1. Enable corepack so pnpm@9 is available
+    # 2. Install workspace dependencies
+    # 3. Compile TypeScript across the workspace
+    # 4. Apply Drizzle migrations (idempotent — safe to run on every deploy)
+    #
+    # Note: --no-frozen-lockfile is used because the initial repo doesn't yet
+    # have a pnpm-lock.yaml. After your first `pnpm install` locally and
+    # committing the lockfile, switch this to --frozen-lockfile for reproducible
+    # production builds.
+    buildCommand: |
+      corepack enable
+      corepack prepare pnpm@9.12.0 --activate
+      pnpm install --no-frozen-lockfile
+      pnpm build
+      pnpm --filter @nearfold/api db:migrate
+
+    startCommand: pnpm --filter @nearfold/api start
+
+    envVars:
+      # --- Runtime ---
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: '20'
+      - key: LOG_LEVEL
+        value: info
+      # Render injects PORT automatically (typically 10000); our env loader
+      # picks it up via the PORT env var.
+
+      # --- Auto-generated secrets ---
+      # Render generates a strong random string for these on first deploy.
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_KEY
+        generateValue: true
+
+      # --- User-provided secrets (you set these in Render's dashboard) ---
+      - key: DATABASE_URL
+        sync: false # e.g. postgresql://user:pass@ep-xxx.neon.tech/db?sslmode=require
+
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_CLIENT_EMAIL
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY
+        sync: false
+
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
+
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
+
+      # --- Tunable defaults (override in dashboard if needed) ---
+      - key: JWT_ACCESS_TOKEN_TTL
+        value: 7d
+      - key: PLATFORM_FEE_PERCENT
+        value: '5'
+      - key: OTP_REQUEST_LIMIT_PER_HOUR
+        value: '5'
+      - key: CORS_ORIGINS
+        # Comma-separated origins. Replace `*` with your mobile app's
+        # production deep-link host and any web admin origins.
+        value: '*'
