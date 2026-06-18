@@ -15,6 +15,9 @@
     "verify:prod-strip": "bash scripts/verify-prod-strip.sh"
   },
   "dependencies": {
+    "@expo-google-fonts/fraunces": "^0.2.3",
+    "@expo-google-fonts/inter": "^0.2.3",
+    "@expo-google-fonts/jetbrains-mono": "^0.2.3",
     "@expo/vector-icons": "^14.0.4",
     "@gorhom/bottom-sheet": "^5.0.6",
     "@hookform/resolvers": "^3.9.0",

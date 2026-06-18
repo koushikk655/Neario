@@ -8,24 +8,25 @@
 
 import type { TextStyle } from 'react-native';
 
+// Family names match the @expo-google-fonts exports loaded in useFonts.ts.
 export const fontFamilies = {
   serif: {
-    regular: 'Fraunces-Regular',
-    medium: 'Fraunces-Medium',
-    semibold: 'Fraunces-SemiBold',
-    bold: 'Fraunces-Bold',
-    italic: 'Fraunces-Italic',
+    regular: 'Fraunces_400Regular',
+    medium: 'Fraunces_500Medium',
+    semibold: 'Fraunces_600SemiBold',
+    bold: 'Fraunces_700Bold',
+    italic: 'Fraunces_400Regular_Italic',
   },
   sans: {
-    regular: 'Inter-Regular',
-    medium: 'Inter-Medium',
-    semibold: 'Inter-SemiBold',
-    bold: 'Inter-Bold',
+    regular: 'Inter_400Regular',
+    medium: 'Inter_500Medium',
+    semibold: 'Inter_600SemiBold',
+    bold: 'Inter_700Bold',
   },
   mono: {
-    regular: 'JetBrainsMono-Regular',
-    medium: 'JetBrainsMono-Medium',
-    bold: 'JetBrainsMono-Bold',
+    regular: 'JetBrainsMono_400Regular',
+    medium: 'JetBrainsMono_500Medium',
+    bold: 'JetBrainsMono_700Bold',
   },
 } as const;
 
