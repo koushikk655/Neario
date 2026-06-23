@@ -6,7 +6,6 @@
 import { useMemo } from 'react';
 import { Alert, Dimensions, Pressable, StyleSheet, Text, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
-import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery } from '@tanstack/react-query';
@@ -14,6 +13,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { useTheme } from '../../../src/theme/useTheme';
 import { CartBar, EmptyState, ProductCard, Rating, Skeleton } from '../../../src/components';
+import { categoryIcon } from '../../../src/components/feature/SellerCard';
 import { sellersApi } from '../../../src/api/sellers';
 import { productsApi } from '../../../src/api/products';
 import { queryKeys } from '../../../src/lib/queryKeys';
@@ -21,7 +21,6 @@ import { formatPaise, formatTime } from '../../../src/lib/format';
 import { useCart, useAddToCartWithConflict } from '../../../src/hooks/useCart';
 import type { BusinessHour, Product } from '../../../src/api/types';
 
-const COVER_BLUR = 'L5H2EC=PM+yV0g-mq.wG9c010J}I';
 const SCREEN_W = Dimensions.get('window').width;
 
 export default function ShopScreen() {
@@ -83,15 +82,8 @@ export default function ShopScreen() {
 
   const Header = (
     <View>
-      <View style={{ height: 200, backgroundColor: theme.colors.surfaceMuted }}>
-        <Image
-          source={seller?.category ? { uri: `https://source.unsplash.com/800x500/?${encodeURIComponent(seller.category + ' homemade food')}` } : undefined}
-          placeholder={{ blurhash: COVER_BLUR }}
-          contentFit="cover"
-          transition={300}
-          style={StyleSheet.absoluteFill}
-        />
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: theme.colors.scrim, opacity: 0.25 }]} />
+      <View style={{ height: 200, backgroundColor: theme.colors.accentMuted, alignItems: 'center', justifyContent: 'center' }}>
+        <Ionicons name={categoryIcon(seller?.category ?? null)} size={66} color={theme.colors.accent} />
         <SafeAreaView edges={['top']} style={{ position: 'absolute', top: 0, left: 0 }}>
           <BackButton onPress={() => router.back()} theme={theme} floating />
         </SafeAreaView>

@@ -1,13 +1,18 @@
 // SellerCard — a tappable seller row for the discovery feed.
 //
-// Layout: square image on the left (blur-up via expo-image), shop name +
-// category + rating + distance/ETA on the right. A small "Closed" scrim
-// when the seller isn't open. Editorial weight on the shop name (serif),
-// functional meta in sans/mono.
+// Layout: square category tile on the left, shop name + category + rating +
+// distance/min-order on the right. A "Closed" scrim when the seller isn't
+// open. Editorial weight on the shop name (serif), functional meta in
+// sans/mono.
+//
+// Sellers don't carry a cover image in the discovery payload yet, so the
+// tile is a clean saffron-tinted block with a category glyph — intentional,
+// loads instantly, and looks right in both themes. Swap for the maker's
+// real cover once the backend/Cloudinary provides one.
 
 import { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Image } from 'expo-image';
+import { Ionicons } from '@expo/vector-icons';
 
 import { useTheme } from '../../theme/useTheme';
 import { Card } from '../Card';
@@ -15,38 +20,53 @@ import { Rating } from '../Rating';
 import { formatDistance, formatPaise } from '../../lib/format';
 import type { NearbySeller } from '../../api/types';
 
-// Tiny blurhash so the image area never flashes a hard rectangle.
-const BLUR = 'L6Pj0^jE.AyE_3t7t7R**0o#DgR4';
+type IoniconName = keyof typeof Ionicons.glyphMap;
+
+export function categoryIcon(category: string | null): IoniconName {
+  switch ((category ?? '').toLowerCase()) {
+    case 'bakes':
+      return 'cafe-outline';
+    case 'pickles':
+      return 'nutrition-outline';
+    case 'sweets':
+      return 'ice-cream-outline';
+    case 'crafts':
+      return 'color-palette-outline';
+    case 'candles':
+      return 'flame-outline';
+    case 'ceramics':
+      return 'cube-outline';
+    case 'plants':
+      return 'leaf-outline';
+    case 'prints':
+      return 'image-outline';
+    case 'decor':
+      return 'home-outline';
+    case 'gifts':
+      return 'gift-outline';
+    default:
+      return 'storefront-outline';
+  }
+}
 
 export interface SellerCardProps {
   seller: NearbySeller;
   onPress: () => void;
 }
 
-function categoryImage(category: string | null): string | undefined {
-  // Sellers don't carry a cover image in the discovery payload yet, so we
-  // fall back to a category-keyed Unsplash source. Replace with the
-  // seller's real cover once the backend includes it.
-  if (!category) return undefined;
-  const q = encodeURIComponent(`${category} food homemade`);
-  return `https://source.unsplash.com/160x160/?${q}`;
-}
-
 export const SellerCard = memo(function SellerCard({ seller, onPress }: SellerCardProps) {
   const theme = useTheme();
-  const img = categoryImage(seller.category);
 
   return (
     <Card variant="elevated" padding="sm" onPress={onPress} radius="xl">
       <View style={styles.row}>
-        <View style={{ width: 76, height: 76, borderRadius: theme.radii.lg, overflow: 'hidden' }}>
-          <Image
-            source={img ? { uri: img } : undefined}
-            placeholder={{ blurhash: BLUR }}
-            contentFit="cover"
-            transition={250}
-            style={StyleSheet.absoluteFill}
-          />
+        <View
+          style={[
+            styles.tile,
+            { borderRadius: theme.radii.lg, backgroundColor: theme.colors.accentMuted },
+          ]}
+        >
+          <Ionicons name={categoryIcon(seller.category)} size={30} color={theme.colors.accent} />
           {!seller.isOpen ? (
             <View style={[StyleSheet.absoluteFill, styles.closedScrim, { backgroundColor: theme.colors.scrim }]}>
               <Text style={[theme.type.labelSm, { color: '#fff' }]}>Closed</Text>
@@ -56,10 +76,7 @@ export const SellerCard = memo(function SellerCard({ seller, onPress }: SellerCa
 
         <View style={{ flex: 1, marginLeft: theme.spacing.md }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text
-              style={[theme.type.h4, { color: theme.colors.text, flex: 1 }]}
-              numberOfLines={1}
-            >
+            <Text style={[theme.type.h4, { color: theme.colors.text, flex: 1 }]} numberOfLines={1}>
               {seller.shopName}
             </Text>
             <Rating rating={seller.rating} totalOrders={seller.totalOrders} size="sm" style={{ marginLeft: 8 }} />
@@ -91,9 +108,7 @@ export const SellerCard = memo(function SellerCard({ seller, onPress }: SellerCa
 
 function Meta({ text }: { text: string }) {
   const theme = useTheme();
-  return (
-    <Text style={[theme.type.caption, { color: theme.colors.textTertiary }]}>{text}</Text>
-  );
+  return <Text style={[theme.type.caption, { color: theme.colors.textTertiary }]}>{text}</Text>;
 }
 
 function Dot() {
@@ -105,5 +120,6 @@ function Dot() {
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center' },
+  tile: { width: 76, height: 76, overflow: 'hidden', alignItems: 'center', justifyContent: 'center' },
   closedScrim: { alignItems: 'center', justifyContent: 'center' },
 });
