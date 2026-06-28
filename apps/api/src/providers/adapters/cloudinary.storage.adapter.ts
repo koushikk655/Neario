@@ -1,24 +1,21 @@
 import crypto from 'node:crypto';
 import { env, hasCloudinaryConfig } from '../../config/env.js';
 import { ConfigError } from '../../utils/errors.js';
-
-export interface SignedUploadParams {
-  timestamp: number;
-  folder: string;
-  signature: string;
-  apiKey: string;
-  cloudName: string;
-}
+import type { SignedUploadParams, StorageProvider } from '../ports.js';
 
 /**
- * Returns parameters the client can use to POST directly to Cloudinary
- * (so the file bytes never go through our API server).
- *
- * Client uploads to:
+ * Cloudinary adapter (free tier). Returns a signed payload the client uses to
+ * POST bytes straight to Cloudinary:
  *   POST https://api.cloudinary.com/v1_1/{cloud_name}/image/upload
- * with body fields: file, timestamp, signature, api_key, folder
+ * with fields: file, timestamp, signature, api_key, folder.
  */
-export const cloudinaryService = {
+export class CloudinaryStorageAdapter implements StorageProvider {
+  readonly name = 'cloudinary';
+
+  isConfigured(): boolean {
+    return hasCloudinaryConfig;
+  }
+
   generateSignedUpload(folder: string): SignedUploadParams {
     if (!hasCloudinaryConfig) {
       throw new ConfigError(
@@ -40,5 +37,5 @@ export const cloudinaryService = {
       apiKey: env.CLOUDINARY_API_KEY!,
       cloudName: env.CLOUDINARY_CLOUD_NAME!,
     };
-  },
-};
+  }
+}
