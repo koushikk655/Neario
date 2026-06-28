@@ -1,5 +1,5 @@
 // Spacing — 4pt grid with named semantic steps.
-// Source: Nearfold Design System v1.2 → Phase 02 Tokens.
+// Source: NearKin Design System v1.2 → Phase 02 Tokens.
 
 export const spacing = {
   none: 0,

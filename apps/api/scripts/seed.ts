@@ -1,13 +1,13 @@
 /**
  * Dev seed — Guwahati makers.
  *
- * Nearfold is a hyperlocal *makers'* marketplace — home bakers, preserve-
+ * NearKin is a hyperlocal *makers'* marketplace — home bakers, preserve-
  * makers, weavers, candle/soap makers. NOT food delivery. So the seed is
  * artisans with varied lead times: pickles ready in a couple hours, a
  * custom cake "made to order, 2 days", a handwoven stole "5 days".
  *
  * Run after migrations:
- *   pnpm --filter @nearfold/api db:seed
+ *   pnpm --filter @nearkin/api db:seed
  *
  * Idempotent (deterministic UUIDs). The PostGIS shop_location column is
  * filled by the seller_profiles_sync_location trigger from shop_lat/lng.
@@ -30,7 +30,7 @@ const CENTER = { lat: 26.1445, lng: 91.7362 };
 
 /** Deterministic UUID (v5-shaped) so seed rows are stable across runs. */
 function detUuid(name: string): string {
-  const h = createHash('sha1').update(`nearfold-seed:${name}`).digest('hex');
+  const h = createHash('sha1').update(`nearkin-seed:${name}`).digest('hex');
   return `${h.slice(0, 8)}-${h.slice(8, 12)}-5${h.slice(13, 16)}-8${h.slice(17, 20)}-${h.slice(20, 32)}`;
 }
 

@@ -127,7 +127,7 @@ export const useAuthStore = create<AuthState>()(
       setStatus: (s) => set({ status: s }),
     }),
     {
-      name: 'nearfold.auth',
+      name: 'nearkin.auth',
       storage: createJSONStorage(() => secureStringStorage),
       partialize: (state) => ({
         token: state.token,

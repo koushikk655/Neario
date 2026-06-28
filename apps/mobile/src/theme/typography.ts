@@ -1,4 +1,4 @@
-// Typography — locked type stack from Nearfold Design System v1.2.
+// Typography — locked type stack from NearKin Design System v1.2.
 // Serif: Fraunces (editorial, warm, narrative headings & display)
 // Sans:  Inter (functional body, UI, dense product surfaces)
 // Mono:  JetBrains Mono (numerics, codes, metadata)

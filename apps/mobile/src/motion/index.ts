@@ -1,5 +1,5 @@
 // Motion tokens — durations, easings, springs.
-// Source: Nearfold Design System v1.2 → Phase 03 Motion Language.
+// Source: NearKin Design System v1.2 → Phase 03 Motion Language.
 //
 // Design intent: "restrained but alive". Most micro-interactions land in
 // 120–200ms with a decelerating curve so they feel intentional without

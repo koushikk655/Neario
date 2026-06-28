@@ -56,7 +56,7 @@ export async function openRazorpayCheckout(
       amount: opts.amount,
       currency: opts.currency,
       name: opts.name,
-      description: opts.description ?? 'Nearfold order',
+      description: opts.description ?? 'NearKin order',
       prefill: {
         contact: opts.prefillContact ?? '',
         email: opts.prefillEmail ?? '',

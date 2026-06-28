@@ -1,5 +1,5 @@
-// Light palette — "Premium Light" direction from Nearfold Design System v1.2.
-// Source of truth: Library → "Nearfold — Design System v1.2" (front-door index),
+// Light palette — "Premium Light" direction from NearKin Design System v1.2.
+// Source of truth: Library → "NearKin — Design System v1.2" (front-door index),
 // specifically Phase 02 Tokens and Phase 06 Hero Screens cascade.
 //
 // Saffron #FF8A3D is the locked single accent. Neutrals are warm-tinted to

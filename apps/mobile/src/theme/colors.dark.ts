@@ -1,5 +1,5 @@
-// Dark palette — "Premium Dark" direction from Nearfold Design System v1.2.
-// Source of truth: Library → "Nearfold — Design System v1.2", Phase 02 Tokens.
+// Dark palette — "Premium Dark" direction from NearKin Design System v1.2.
+// Source of truth: Library → "NearKin — Design System v1.2", Phase 02 Tokens.
 //
 // Background is a deep warm-black (not pure #000), surfaces step up in luminance
 // for elevation hierarchy. Accent shifts slightly brighter to maintain WCAG AA

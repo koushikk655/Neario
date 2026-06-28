@@ -1,4 +1,4 @@
-// useFonts — load the Nearfold type stack (Fraunces + Inter + JetBrains
+// useFonts — load the NearKin type stack (Fraunces + Inter + JetBrains
 // Mono) straight from npm via @expo-google-fonts. No manual .ttf files to
 // download or place — `pnpm install` brings the fonts with it, and they're
 // bundled at build time.
