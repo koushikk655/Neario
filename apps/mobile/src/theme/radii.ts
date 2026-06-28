@@ -1,5 +1,5 @@
 // Border radii — tuned for v1.2 cascade (warm asymmetric, premium).
-// Source: Nearfold Design System v1.2 → Phase 02 Tokens, Phase 07 Components.
+// Source: NearKin Design System v1.2 → Phase 02 Tokens, Phase 07 Components.
 
 export const radii = {
   none: 0,

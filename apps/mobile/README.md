@@ -1,8 +1,8 @@
-# Nearfold — Mobile
+# NearKin — Mobile
 
-The Expo + React Native app for Nearfold, a hyperlocal marketplace for home-based sellers and local commerce in Tier-2 Indian cities.
+The Expo + React Native app for NearKin, a hyperlocal marketplace for home-based sellers and local commerce in Tier-2 Indian cities.
 
-`apps/mobile` inside the Nearfold pnpm workspace. Backend: `apps/api`. Shared zod schemas: `packages/shared`.
+`apps/mobile` inside the NearKin pnpm workspace. Backend: `apps/api`. Shared zod schemas: `packages/shared`.
 
 ## Stack
 
@@ -17,7 +17,7 @@ The Expo + React Native app for Nearfold, a hyperlocal marketplace for home-base
 
 ```bash
 pnpm install                              # from repo root
-pnpm --filter @nearfold/shared build      # build shared zod/types first
+pnpm --filter @nearkin/shared build      # build shared zod/types first
 
 # Phone OTP, Razorpay & push need native modules → use a dev build, NOT Expo Go:
 pnpm --filter mobile prebuild
@@ -59,7 +59,7 @@ app/
 
 ### Design system
 
-Tokens (`src/theme/`) + motion (`src/motion/`) are the source of truth — see **"Nearfold — Design System v1.2"** in the Library. **Components never hardcode color / spacing / radii**; everything reads from `useTheme()`. That's what lets light + dark ship from one component.
+Tokens (`src/theme/`) + motion (`src/motion/`) are the source of truth — see **"NearKin — Design System v1.2"** in the Library. **Components never hardcode color / spacing / radii**; everything reads from `useTheme()`. That's what lets light + dark ship from one component.
 
 ### Money
 

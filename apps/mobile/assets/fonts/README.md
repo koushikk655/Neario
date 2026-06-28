@@ -1,6 +1,6 @@
 # Fonts
 
-The Nearfold type stack — drop the following `.ttf` files into this directory before the first run. All three families ship under the SIL Open Font License (OFL).
+The NearKin type stack — drop the following `.ttf` files into this directory before the first run. All three families ship under the SIL Open Font License (OFL).
 
 ## Required files
 

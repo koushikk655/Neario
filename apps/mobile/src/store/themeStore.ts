@@ -34,7 +34,7 @@ export const useThemeStore = create<ThemeStore>()(
         }),
     }),
     {
-      name: 'nearfold/theme',
+      name: 'nearkin/theme',
       storage: createJSONStorage(() => AsyncStorageShim),
       partialize: (s) => ({ mode: s.mode }),
       onRehydrateStorage: () => () => {

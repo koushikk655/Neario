@@ -110,7 +110,7 @@ export default function CheckoutScreen() {
           orderId: razorpay.orderId,
           amount: razorpay.amount,
           currency: razorpay.currency,
-          name: 'Nearfold',
+          name: 'NearKin',
           prefillContact: user?.phone ?? undefined,
           themeColor: theme.colors.accent,
         });
