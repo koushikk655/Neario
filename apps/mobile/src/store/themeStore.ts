@@ -34,7 +34,7 @@ export const useThemeStore = create<ThemeStore>()(
         }),
     }),
     {
-      name: 'nearkin/theme',
+      name: 'neario/theme',
       storage: createJSONStorage(() => AsyncStorageShim),
       partialize: (s) => ({ mode: s.mode }),
       onRehydrateStorage: () => () => {

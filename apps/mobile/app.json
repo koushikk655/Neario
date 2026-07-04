@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "NearKin",
-    "slug": "nearkin",
+    "name": "Neario",
+    "slug": "neario",
     "version": "0.1.0",
     "orientation": "portrait",
-    "scheme": "nearkin",
+    "scheme": "neario",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "runtimeVersion": { "policy": "appVersion" },
@@ -13,14 +13,14 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.nearkin.app",
+      "bundleIdentifier": "com.neario.app",
       "googleServicesFile": "./GoogleService-Info.plist",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "NearKin uses your location to show home makers and shops within delivery range of you."
+        "NSLocationWhenInUseUsageDescription": "Neario uses your location to show home makers and shops within delivery range of you."
       }
     },
     "android": {
-      "package": "com.nearkin.app",
+      "package": "com.neario.app",
       "edgeToEdgeEnabled": true,
       "googleServicesFile": "./google-services.json",
       "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
@@ -37,7 +37,7 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "NearKin uses your location to show makers within delivery range."
+          "locationWhenInUsePermission": "Neario uses your location to show makers within delivery range."
         }
       ],
       [
@@ -64,7 +64,7 @@
       "typedRoutes": true
     },
     "extra": {
-      "apiBaseUrl": "https://nearfold-api-b9y0.onrender.com/api/v1",
+      "apiBaseUrl": "https://neario-api-b9y0.onrender.com/api/v1",
       "sentryDsn": "",
       "appVariant": "development",
       "eas": {

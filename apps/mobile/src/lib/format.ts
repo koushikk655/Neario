@@ -49,7 +49,7 @@ export function formatEta(minutes: number): string {
 
 /**
  * Fulfillment lead time for a maker's item, from leadTimeHours.
- * NearKin is a makers' marketplace — things are made/prepped to order, so
+ * Neario is a makers' marketplace — things are made/prepped to order, so
  * we frame time as "when it'll be ready", not a delivery countdown.
  *   <1h   → "ready within the hour"
  *   <24h  → "ready in ~3h"

@@ -122,7 +122,7 @@ export function DevGallery() {
 
         <View style={{ flex: 1, marginLeft: !isTablet ? theme.spacing.sm : 0 }}>
           <Text style={[theme.type.labelSm, { color: theme.colors.textTertiary }]}>
-            NEARKIN · DEV
+            NEARIO · DEV
           </Text>
           <Text style={[theme.type.h4, { color: theme.colors.text }]}>
             {story?.title ?? 'Design system'}

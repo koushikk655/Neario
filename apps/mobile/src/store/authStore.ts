@@ -127,7 +127,7 @@ export const useAuthStore = create<AuthState>()(
       setStatus: (s) => set({ status: s }),
     }),
     {
-      name: 'nearkin.auth',
+      name: 'neario.auth',
       storage: createJSONStorage(() => secureStringStorage),
       partialize: (state) => ({
         token: state.token,

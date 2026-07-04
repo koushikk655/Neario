@@ -1,4 +1,4 @@
-// Typed fetch wrapper for the NearKin backend.
+// Typed fetch wrapper for the Neario backend.
 //
 // Conventions enforced here:
 // - All routes live under /api/v1. The base URL comes from

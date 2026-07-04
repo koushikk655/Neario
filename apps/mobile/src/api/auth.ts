@@ -8,7 +8,7 @@
 // backend's PR-A transition window the verify-otp endpoint returns BOTH
 // the deprecated `token` field AND the new pair shape; we accept either.
 
-import type { RequestOtpInput, VerifyOtpInput } from '@nearkin/shared';
+import type { RequestOtpInput, VerifyOtpInput } from '@neario/shared';
 
 import { api } from './client';
 

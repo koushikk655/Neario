@@ -74,7 +74,7 @@ export function ColorsStory() {
           { color: theme.colors.textTertiary, marginTop: theme.spacing.md },
         ]}
       >
-        Source: NearKin Design System v1.2 → Phase 02 Tokens.
+        Source: Neario Design System v1.2 → Phase 02 Tokens.
       </Text>
     </StoryFrame>
   );

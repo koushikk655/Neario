@@ -39,7 +39,7 @@ export async function sendPhoneOtp(phone: string): Promise<PhoneConfirmation> {
 
 /**
  * Confirm the SMS code and return the resulting Firebase ID token. The
- * mobile then hands this token to the NearKin backend's /auth/verify-otp.
+ * mobile then hands this token to the Neario backend's /auth/verify-otp.
  */
 export async function confirmPhoneOtp(
   confirmation: PhoneConfirmation,
@@ -54,7 +54,7 @@ export async function confirmPhoneOtp(
 
 /**
  * Sign out of the Firebase client. Note: this only clears Firebase's local
- * state; the NearKin backend session (our own JWT) is cleared separately
+ * state; the Neario backend session (our own JWT) is cleared separately
  * via authStore.clear().
  */
 export async function signOutFirebase(): Promise<void> {

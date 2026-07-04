@@ -57,7 +57,7 @@ export default function ShopScreen() {
     }
     Alert.alert(
       'Start a new cart?',
-      'Your cart has items from another shop. NearKin delivers one shop at a time — clear it and add this instead?',
+      'Your cart has items from another shop. Neario delivers one shop at a time — clear it and add this instead?',
       [
         { text: 'Keep current', style: 'cancel' },
         {

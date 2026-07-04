@@ -15,7 +15,7 @@ import { z } from 'zod';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useRouter, Link } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { phoneSchema } from '@nearkin/shared';
+import { phoneSchema } from '@neario/shared';
 
 import { Button, TextInput } from '../../src/components';
 import { useTheme } from '../../src/theme/useTheme';
@@ -103,7 +103,7 @@ export default function PhoneEntryScreen() {
             },
           ]}
         >
-          NEARKIN
+          NEARIO
         </Text>
         <Text style={[theme.type.display, { color: theme.colors.text, fontSize: 44, lineHeight: 50 }]}>
           Find your locality.

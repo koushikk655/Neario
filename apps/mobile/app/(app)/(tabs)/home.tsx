@@ -79,7 +79,7 @@ export default function DiscoverScreen() {
           body={
             permission === 'denied'
               ? 'We need your location to show makers within delivery range. Enable it in Settings, or try again.'
-              : 'NearKin shows what’s cooking within 5 km of you. Share your location to start.'
+              : 'Neario shows what’s cooking within 5 km of you. Share your location to start.'
           }
           actionLabel={resolving ? 'Locating…' : 'Use my location'}
           onAction={refreshLocation}
@@ -103,7 +103,7 @@ export default function DiscoverScreen() {
       {/* Header */}
       <View style={{ paddingHorizontal: theme.spacing.lg, paddingTop: theme.spacing.sm }}>
         <Text style={[theme.type.caption, { color: theme.colors.textTertiary, letterSpacing: 1.2 }]}>
-          {city ? `NEARKIN · ${city.toUpperCase()}` : 'NEARKIN'}
+          {city ? `NEARIO · ${city.toUpperCase()}` : 'NEARIO'}
         </Text>
         <Text style={[theme.type.h2, { color: theme.colors.text, marginTop: 2 }]}>
           Makers near you.
