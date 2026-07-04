@@ -50,7 +50,7 @@ export const useLocationStore = create<LocationState>()(
       clear: () => set({ coords: null, city: null, manual: false }),
     }),
     {
-      name: 'nearkin/location',
+      name: 'neario/location',
       storage: createJSONStorage(() => AsyncStorageShim),
       partialize: (s) => ({ coords: s.coords, city: s.city, manual: s.manual }),
     },

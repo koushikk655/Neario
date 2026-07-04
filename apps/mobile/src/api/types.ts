@@ -1,5 +1,5 @@
 // Mobile-side mirror of the backend response shapes. These intentionally
-// duplicate what @nearkin/shared exports for inputs, but the RESPONSE
+// duplicate what @neario/shared exports for inputs, but the RESPONSE
 // shapes (entities with server-assigned fields) live here since the
 // shared package only exports zod input schemas + a few enums.
 //

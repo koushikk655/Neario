@@ -62,7 +62,7 @@ export function TextInputStory() {
         <View>
           <TextInput
             label="Read-only"
-            value="aunty.kitchen@nearkin"
+            value="aunty.kitchen@neario"
             editable={false}
           />
         </View>

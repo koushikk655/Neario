@@ -1,6 +1,6 @@
 // Perf instrumentation — measure against the Phase 04 budgets.
 //
-// Budgets (from "NearKin — Perceived Performance · Phase 04"):
+// Budgets (from "Neario — Perceived Performance · Phase 04"):
 //   cold start    < 1500 ms   (app launch → first interactive screen)
 //   first content <  400 ms   (screen mount → first data painted)
 //   tap ack       <  100 ms   (press → visual feedback)

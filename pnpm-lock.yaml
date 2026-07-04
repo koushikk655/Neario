@@ -34,7 +34,7 @@ importers:
 
   apps/api:
     dependencies:
-      '@nearkin/shared':
+      '@neario/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@types/compression':
@@ -143,7 +143,7 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.10.0(react-hook-form@7.76.1(react@18.3.1))
-      '@nearkin/shared':
+      '@neario/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@react-native-firebase/app':

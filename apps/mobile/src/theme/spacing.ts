@@ -1,5 +1,5 @@
 // Spacing — 4pt grid with named semantic steps.
-// Source: NearKin Design System v1.2 → Phase 02 Tokens.
+// Source: Neario Design System v1.2 → Phase 02 Tokens.
 
 export const spacing = {
   none: 0,

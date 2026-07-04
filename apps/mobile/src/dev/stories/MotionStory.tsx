@@ -37,7 +37,7 @@ export function MotionStory() {
           { color: theme.colors.textTertiary, marginTop: theme.spacing.md },
         ]}
       >
-        Source: NearKin Design System v1.2 → Phase 03 Motion Language.
+        Source: Neario Design System v1.2 → Phase 03 Motion Language.
       </Text>
     </StoryFrame>
   );
