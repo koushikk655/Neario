@@ -24,7 +24,7 @@
   .disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
   .sit{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1240px;margin:0 auto;padding-left:6vw;padding-right:6vw}
+  .wrap{max-width:1240px;margin:0 auto;padding-left:clamp(26px,6vw,84px);padding-right:clamp(26px,6vw,84px)}
 
   body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.03;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -74,7 +74,7 @@
     letter-spacing:.16em;text-transform:uppercase;color:var(--saffron-deep);margin-bottom:28px}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--saffron);animation:pulse 2.4s infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,122,47,.5)}55%{box-shadow:0 0 0 9px rgba(255,122,47,0)}}
-  h1.head{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(44px,6.8vw,86px);line-height:1.01;letter-spacing:-.03em}
+  h1.head{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(38px,6.8vw,86px);line-height:1.03;letter-spacing:-.03em}
   h1.head .sit{color:var(--saffron-deep);font-size:1.04em;letter-spacing:-.01em}
   .h-line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
   .h-line>span{display:inline-block;transform:translateY(112%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
@@ -481,10 +481,12 @@
   <div class="wrap reveal">
     <h2>Find what's <span class="sit">already</span><br>around you.</h2>
     <p class="lead">Neario launches soon, locality by locality. Join early access and we'll bring your area online first.</p>
-    <form class="form" onsubmit="event.preventDefault();const i=this.querySelector('input');i.value='';i.placeholder='You’re on the list ✦ See you soon.';">
-      <input type="email" required placeholder="your@email.com" aria-label="Email" />
-      <button class="btn btn-saffron" type="submit"><span>Join early access</span> <span class="arr">→</span></button>
+    <form class="form" id="waitlist">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+      <input type="email" name="email" required placeholder="your@email.com" aria-label="Email" />
+      <button class="btn btn-saffron" type="submit"><span id="wl-label">Join early access</span> <span class="arr">→</span></button>
     </form>
+    <p id="wl-msg" style="margin-top:16px;font-size:14px;color:#B9AE9D;min-height:20px"></p>
     <p class="seller-l">Make something your locality should know about? <a href="#join">Join the seller waitlist</a></p>
   </div>
 </section>
@@ -532,6 +534,41 @@
     d.addEventListener('toggle',()=>{
       if(d.open)document.querySelectorAll('details').forEach(o=>{if(o!==d)o.open=false;});
     });
+  });
+
+  // waitlist form -> FormSubmit (delivers to contact@crevulabs.com)
+  const wl=document.getElementById('waitlist');
+  wl.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const input=wl.querySelector('input[name=email]');
+    const label=document.getElementById('wl-label');
+    const msg=document.getElementById('wl-msg');
+    const honey=wl.querySelector('input[name=_honey]').value;
+    if(honey)return;
+    label.textContent='Joining…';
+    try{
+      const res=await fetch('https://formsubmit.co/ajax/contact@crevulabs.com',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({
+          email:input.value,
+          _subject:'New Neario waitlist signup',
+          _template:'table',
+          _captcha:'false',
+          source:'neario.in landing',
+          signed_up_at:new Date().toISOString()
+        })
+      });
+      if(!res.ok)throw new Error('bad status');
+      input.value='';
+      input.placeholder='You’re on the list ✦';
+      label.textContent='Joined ✓';
+      msg.textContent='We’ll write to you when your locality opens.';
+      setTimeout(()=>{label.textContent='Join early access';},4000);
+    }catch(err){
+      label.textContent='Join early access';
+      msg.innerHTML='Hmm, that didn’t go through — email us at <a href="mailto:contact@crevulabs.com" style="color:#FF7A2F">contact@crevulabs.com</a>';
+    }
   });
 </script>
 </body>
