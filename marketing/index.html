@@ -7,256 +7,279 @@
 <meta name="description" content="Neario puts the home bakers, tiffin kitchens and independent makers around you on the map — and lets you buy from them directly. Coming soon." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --cream:#FAF7F2; --cream2:#F2EDE4; --paper:#FFFEFB;
-    --ink:#12100D; --ink2:#3A342C; --muted:#8A8072;
-    --saffron:#FF8A3D; --saffron-deep:#E8681A; --saffron-soft:#FFF1E6;
-    --line:#E7E0D3; --dark:#0D0A07; --dark2:#171310;
+    --cream:#FAF6EF; --cream2:#F1EAE0; --paper:#FFFDF8;
+    --ink:#141210; --ink2:#3B352D; --muted:#8B8172;
+    --saffron:#FF7A2F; --saffron-deep:#E8611A; --saffron-soft:#FFEEDF;
+    --green:#1C4A38; --green-deep:#123528; --green-soft:#E9F1E9;
+    --line:#E7DFD1; --dark:#12100C;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   ::selection{background:var(--saffron);color:#221000}
-  body{
-    background:var(--cream); color:var(--ink);
-    font-family:'Instrument Sans',system-ui,sans-serif; line-height:1.6;
-    -webkit-font-smoothing:antialiased; overflow-x:hidden;
-  }
-  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
-  .grotesk{font-family:'Space Grotesk',monospace}
+  body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+  .sit{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1240px;margin:0 auto;padding-left:6vw;padding-right:6vw}
 
-  /* ---------- grain ---------- */
-  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.035;
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.03;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
 
   /* ---------- nav ---------- */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
-  nav.scrolled{background:rgba(250,247,242,.82);backdrop-filter:blur(14px) saturate(1.5);border-color:var(--line)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .35s;border-bottom:1px solid transparent}
+  nav.scrolled{background:rgba(250,246,239,.85);backdrop-filter:blur(14px) saturate(1.5);border-color:var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:78px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:'Instrument Serif';font-size:27px;letter-spacing:-.01em}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Bricolage Grotesque';font-weight:700;font-size:24px;letter-spacing:-.02em}
   .mark{width:36px;height:27px;flex:none}
-  .nav-right{display:flex;align-items:center;gap:20px}
-  .pre{font-family:'Space Grotesk';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--saffron-deep);
-    border:1px solid rgba(255,138,61,.55);border-radius:100px;padding:5px 12px;font-weight:500}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .pre{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700;
+    border:1.5px solid rgba(28,74,56,.35);border-radius:100px;padding:6px 13px}
   @media(max-width:640px){.pre{display:none}}
 
   /* ---------- buttons ---------- */
-  .btn{position:relative;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15.5px;
-    padding:16px 28px;border-radius:100px;cursor:pointer;border:0;overflow:hidden;
+  .btn{position:relative;display:inline-flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:600;font-size:15.5px;
+    padding:16px 28px;border-radius:100px;cursor:pointer;border:0;overflow:hidden;letter-spacing:0;
     transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
   .btn .arr{display:inline-block;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
   .btn:hover .arr{transform:translateX(5px)}
-  .btn-primary{background:var(--ink);color:var(--cream)}
-  .btn-primary::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,var(--saffron),var(--saffron-deep));
-    transform:translateX(-101%);transition:transform .45s cubic-bezier(.7,0,.2,1);border-radius:inherit}
-  .btn-primary span{position:relative;z-index:1;transition:color .3s}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px -14px rgba(232,104,26,.55)}
-  .btn-primary:hover::before{transform:translateX(0)}
-  .btn-primary:hover span{color:#221000}
-  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px)}
-  .btn-sm{padding:12px 22px;font-size:14.5px}
-  .btn-saffron{background:var(--saffron);color:#221000;box-shadow:0 14px 32px -12px rgba(232,104,26,.6)}
-  .btn-saffron::before{content:"";position:absolute;inset:0;background:var(--cream);transform:translateX(-101%);
-    transition:transform .45s cubic-bezier(.7,0,.2,1);border-radius:inherit}
-  .btn-saffron span{position:relative;z-index:1}
+  .btn span{position:relative;z-index:1}
+  .btn-dark{background:var(--ink);color:var(--cream)}
+  .btn-dark::before{content:"";position:absolute;inset:0;background:var(--saffron);transform:translateX(-101%);
+    transition:transform .45s cubic-bezier(.7,0,.2,1)}
+  .btn-dark:hover{transform:translateY(-3px);box-shadow:0 18px 34px -14px rgba(232,97,26,.5)}
+  .btn-dark:hover::before{transform:translateX(0)}
+  .btn-dark:hover span{color:#221000}
+  .btn-saffron{background:var(--saffron);color:#221000;box-shadow:0 14px 32px -12px rgba(232,97,26,.55)}
+  .btn-saffron::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateX(-101%);
+    transition:transform .45s cubic-bezier(.7,0,.2,1)}
   .btn-saffron:hover{transform:translateY(-3px)}
   .btn-saffron:hover::before{transform:translateX(0)}
+  .btn-saffron:hover span{color:var(--cream)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);font-weight:600}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px)}
+  .btn-green{background:var(--saffron);color:#221000}
+  .btn-green::before{content:"";position:absolute;inset:0;background:var(--cream);transform:translateX(-101%);transition:transform .45s cubic-bezier(.7,0,.2,1)}
+  .btn-green:hover{transform:translateY(-3px)}
+  .btn-green:hover::before{transform:translateX(0)}
+  .btn-sm{padding:12px 22px;font-size:14.5px}
 
   /* ---------- hero ---------- */
-  .hero{padding-top:170px;padding-bottom:0;display:grid;grid-template-columns:1fr;gap:56px;align-items:center;position:relative}
-  @media(min-width:1000px){.hero{grid-template-columns:1.12fr .88fr;padding-top:190px;gap:20px}}
-  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-size:12.5px;font-weight:500;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--saffron-deep);margin-bottom:30px}
+  .hero{padding-top:168px;display:grid;grid-template-columns:1fr;gap:56px;align-items:center}
+  @media(min-width:1000px){.hero{grid-template-columns:1.12fr .88fr;padding-top:185px;gap:20px}}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--saffron-deep);margin-bottom:28px}
   .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--saffron);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,138,61,.5)}55%{box-shadow:0 0 0 9px rgba(255,138,61,0)}}
-  h1.head{font-family:'Instrument Serif';font-weight:400;font-size:clamp(48px,7.6vw,96px);line-height:.98;letter-spacing:-.022em}
-  h1.head em{font-style:italic;color:var(--saffron-deep)}
-  .h-line{display:block;overflow:hidden}
-  .h-line>span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,122,47,.5)}55%{box-shadow:0 0 0 9px rgba(255,122,47,0)}}
+  h1.head{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(44px,6.8vw,86px);line-height:1.01;letter-spacing:-.03em}
+  h1.head .sit{color:var(--saffron-deep);font-size:1.04em;letter-spacing:-.01em}
+  .h-line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+  .h-line>span{display:inline-block;transform:translateY(112%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
   .h-line:nth-child(2)>span{animation-delay:.12s}
   .h-line:nth-child(3)>span{animation-delay:.24s}
   @keyframes rise{to{transform:translateY(0)}}
-  .sub{margin-top:32px;font-size:clamp(17px,1.9vw,20.5px);color:var(--ink2);max-width:33ch;opacity:0;animation:fade .9s .5s forwards}
+  .sub{margin-top:30px;font-size:clamp(17px,1.9vw,20px);color:var(--ink2);max-width:34ch;opacity:0;animation:fade .9s .5s forwards}
+  .sub b{font-weight:600;color:var(--ink)}
   @keyframes fade{to{opacity:1}}
-  .hero-actions{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:fade .9s .65s forwards}
+  .hero-actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:fade .9s .65s forwards}
   .hero-foot{margin-top:26px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14.5px;opacity:0;animation:fade .9s .8s forwards}
-  .hero-foot b{font-family:'Space Grotesk';font-weight:500;color:var(--ink2)}
+  .hero-foot b{font-weight:600;color:var(--green)}
 
   /* ---------- phone ---------- */
   .stage{position:relative;display:flex;justify-content:center;opacity:0;animation:fade 1s .45s forwards}
-  .glow{position:absolute;inset:-12% -6% -4% -6%;background:radial-gradient(58% 52% at 62% 32%,rgba(255,138,61,.34),transparent 70%);filter:blur(14px)}
+  .glow{position:absolute;inset:-12% -6% -4% -6%;background:radial-gradient(58% 52% at 62% 32%,rgba(255,122,47,.32),transparent 70%);filter:blur(14px)}
   .phone{position:relative;width:308px;max-width:84vw;background:var(--dark);border-radius:46px;padding:12px;
     box-shadow:0 40px 90px -34px rgba(30,18,8,.55),0 0 0 1px rgba(255,255,255,.06) inset;
     animation:float 7.5s ease-in-out infinite;transform:rotate(-1.5deg)}
   @keyframes float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(-1.5deg)}}
   @media(prefers-reduced-motion:reduce){.phone{animation:none}.h-line>span{animation-duration:.01s}.sub,.hero-actions,.hero-foot,.stage{animation-duration:.01s}}
   .screen{background:var(--cream);border-radius:36px;overflow:hidden;height:618px;display:flex;flex-direction:column;position:relative}
-  .s-top{padding:18px 18px 14px;background:linear-gradient(155deg,#FFB273,var(--saffron) 52%,var(--saffron-deep));color:#fff}
-  .s-loc{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;opacity:.96;font-family:'Space Grotesk'}
+  .s-top{padding:18px 18px 14px;background:linear-gradient(155deg,#FFA35C,var(--saffron) 52%,var(--saffron-deep));color:#fff}
+  .s-loc{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;opacity:.96;letter-spacing:.08em}
   .s-loc svg{width:13px;height:13px}
-  .s-h{font-family:'Instrument Serif';font-size:23px;margin-top:8px;line-height:1.12}
-  .s-h em{font-style:italic}
+  .s-h{font-family:'Bricolage Grotesque';font-weight:700;font-size:21px;margin-top:8px;line-height:1.15;letter-spacing:-.02em}
   .s-search{margin-top:14px;background:rgba(255,255,255,.94);border-radius:13px;padding:11px 14px;
     color:var(--muted);font-size:13px;display:flex;align-items:center;gap:8px}
   .s-search svg{width:14px;height:14px;color:var(--saffron-deep)}
-  .type-caret{display:inline-block;width:1px;height:13px;background:var(--saffron-deep);margin-left:1px;animation:blink 1s steps(1) infinite;vertical-align:-2px}
+  .type-caret{display:inline-block;width:1.5px;height:13px;background:var(--saffron-deep);margin-left:1px;animation:blink 1s steps(1) infinite;vertical-align:-2px}
   @keyframes blink{50%{opacity:0}}
   .chips{display:flex;gap:7px;padding:14px 15px 4px;flex-wrap:wrap}
-  .chip{font-size:11.5px;font-weight:600;padding:7px 13px;border-radius:100px;background:var(--cream2);color:var(--ink2)}
-  .chip.on{background:var(--ink);color:var(--cream)}
+  .chip{font-size:11.5px;font-weight:700;padding:7px 13px;border-radius:100px;background:var(--cream2);color:var(--ink2)}
+  .chip.on{background:var(--green);color:#fff}
   .feed{padding:9px 15px 16px;flex:1;overflow:hidden}
   .card{display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);
     border-radius:17px;padding:12px;margin-top:11px;opacity:0;transform:translateY(14px);animation:cardIn .7s cubic-bezier(.2,.8,.2,1) forwards}
-  .card:nth-child(1){animation-delay:1.0s}.card:nth-child(2){animation-delay:1.15s}
+  .card:nth-child(1){animation-delay:1s}.card:nth-child(2){animation-delay:1.15s}
   .card:nth-child(3){animation-delay:1.3s}.card:nth-child(4){animation-delay:1.45s}
   @keyframes cardIn{to{opacity:1;transform:none}}
   .thumb{width:52px;height:52px;border-radius:14px;flex:none;display:grid;place-items:center;
-    font-family:'Instrument Serif';font-size:24px;color:#fff}
-  .t1{background:linear-gradient(140deg,#F2994A,#E2671A)} .t2{background:linear-gradient(140deg,#7BB661,#3E7C4B)}
+    font-family:'Bricolage Grotesque';font-weight:700;font-size:22px;color:#fff}
+  .t1{background:linear-gradient(140deg,#F2994A,#E2671A)} .t2{background:linear-gradient(140deg,#5FA97A,#1C4A38)}
   .t3{background:linear-gradient(140deg,#C45D9A,#8E3C73)} .t4{background:linear-gradient(140deg,#5E97C9,#2F5E86)}
   .c-name{font-weight:600;font-size:14.5px;letter-spacing:-.01em}
   .c-meta{font-size:11.5px;color:var(--muted);margin-top:3px;display:flex;align-items:center;gap:7px}
-  .open{display:inline-flex;align-items:center;gap:4px;color:#3E9B54;font-weight:500}
-  .open::before{content:"";width:6px;height:6px;border-radius:50%;background:#3E9B54}
+  .open{display:inline-flex;align-items:center;gap:4px;color:#2E7D4F;font-weight:600}
+  .open::before{content:"";width:6px;height:6px;border-radius:50%;background:#2E7D4F}
   .heart{margin-left:auto;color:var(--line)}
   .heart svg{width:18px;height:18px}
-  .toast{position:absolute;left:14px;right:14px;bottom:16px;background:var(--dark);color:var(--cream);border-radius:15px;
+  .toast{position:absolute;left:14px;right:14px;bottom:16px;background:var(--green-deep);color:#F2F7F2;border-radius:15px;
     padding:12px 14px;display:flex;gap:11px;align-items:center;font-size:12.5px;
     transform:translateY(140%);animation:toastLoop 9s 2.2s cubic-bezier(.2,.8,.2,1) infinite;box-shadow:0 16px 34px -14px rgba(0,0,0,.5)}
-  .toast .t-ic{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,var(--saffron),var(--saffron-deep));display:grid;place-items:center;flex:none}
+  .toast .t-ic{width:34px;height:34px;border-radius:10px;background:var(--saffron);display:grid;place-items:center;flex:none}
   .toast b{display:block;font-size:12.5px}
-  .toast span{opacity:.65;font-size:11.5px}
+  .toast span{opacity:.7;font-size:11.5px}
   @keyframes toastLoop{0%{transform:translateY(140%)}6%,38%{transform:translateY(0)}46%,100%{transform:translateY(140%)}}
 
   /* ---------- marquee ---------- */
-  .marquee{margin-top:90px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    overflow:hidden;background:var(--paper);padding:20px 0;transform:rotate(0deg)}
-  .m-track{display:flex;gap:0;white-space:nowrap;animation:scroll 32s linear infinite;width:max-content}
+  .marquee{margin-top:92px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;background:var(--paper);padding:22px 0}
+  .m-track{display:flex;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content}
   .marquee:hover .m-track{animation-play-state:paused}
   @keyframes scroll{to{transform:translateX(-50%)}}
-  .m-item{font-family:'Instrument Serif';font-size:24px;color:var(--ink2);padding:0 26px;display:inline-flex;align-items:center;gap:26px}
-  .m-item i{font-style:normal;color:var(--saffron);font-size:14px}
-  .m-item em{font-style:italic;color:var(--saffron-deep)}
+  .m-item{font-family:'Bricolage Grotesque';font-weight:600;font-size:21px;color:var(--ink2);padding:0 26px;display:inline-flex;align-items:center;gap:26px;letter-spacing:-.01em}
+  .m-item i{font-style:normal;color:var(--saffron);font-size:15px}
+  .m-item.gr{color:var(--green)}
 
-  /* ---------- sections ---------- */
+  /* ---------- shared ---------- */
   section{position:relative}
   .reveal{opacity:0;transform:translateY(34px)}
   .reveal.in{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-  .klabel{font-family:'Space Grotesk';font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron-deep);
+  .klabel{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron-deep);
     display:inline-flex;align-items:center;gap:10px}
-  .klabel::before{content:"";width:26px;height:1.5px;background:var(--saffron)}
-
-  /* underline sweep */
-  .uline{background-image:linear-gradient(120deg,rgba(255,138,61,.35),rgba(255,138,61,.35));
-    background-repeat:no-repeat;background-size:0% 38%;background-position:0 78%;transition:background-size 1s cubic-bezier(.2,.7,.2,1) .2s}
-  .in .uline,.uline.go{background-size:100% 38%}
+  .klabel::before{content:"";width:26px;height:2px;background:var(--saffron)}
+  .klabel.gr{color:var(--green)} .klabel.gr::before{background:var(--green)}
+  .uline{background-image:linear-gradient(120deg,rgba(255,122,47,.4),rgba(255,122,47,.4));
+    background-repeat:no-repeat;background-size:0% 34%;background-position:0 82%;transition:background-size 1s cubic-bezier(.2,.7,.2,1) .25s}
+  .in .uline{background-size:100% 34%}
+  h2.sec,h3.sec{font-family:'Bricolage Grotesque';font-weight:800;letter-spacing:-.028em;line-height:1.04}
+  .sit-acc{color:var(--saffron-deep)}
 
   /* ---------- define ---------- */
-  .define{padding:120px 0 40px}
-  .define h2{font-family:'Instrument Serif';font-weight:400;font-size:clamp(34px,4.8vw,60px);line-height:1.06;letter-spacing:-.02em;max-width:19ch;margin-top:24px}
-  .define h2 em{font-style:italic;color:var(--saffron-deep)}
-  .nots{margin-top:56px;display:grid;gap:14px}
+  .define{padding:118px 0 40px}
+  .define h2{font-size:clamp(32px,4.6vw,56px);max-width:20ch;margin-top:24px}
+  .nots{margin-top:54px;display:grid;gap:14px}
   @media(min-width:760px){.nots{grid-template-columns:repeat(3,1fr)}}
-  .not{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:34px 30px 38px;
-    transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s}
-  .not:hover{transform:translateY(-7px);box-shadow:0 26px 48px -26px rgba(40,26,12,.25);border-color:#D9CFBE}
-  .not .x{font-family:'Instrument Serif';font-style:italic;font-size:30px;color:var(--saffron);line-height:1}
-  .not h4{font-size:19px;font-weight:600;margin:16px 0 8px;letter-spacing:-.01em}
-  .not p{font-size:15px;color:var(--muted)}
+  .not{border-radius:24px;padding:34px 30px 38px;border:1px solid transparent;
+    transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+  .not:hover{transform:translateY(-7px);box-shadow:0 26px 48px -26px rgba(40,26,12,.22)}
+  .not.c1{background:var(--saffron-soft)} .not.c2{background:var(--green-soft)} .not.c3{background:var(--cream2)}
+  .not .x{font-family:'Bricolage Grotesque';font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    display:inline-block;padding:7px 13px;border-radius:100px;background:rgba(20,18,16,.08)}
+  .not.c1 .x{color:var(--saffron-deep)} .not.c2 .x{color:var(--green)} .not.c3 .x{color:var(--ink2)}
+  .not h4{font-family:'Bricolage Grotesque';font-weight:700;font-size:21px;margin:18px 0 8px;letter-spacing:-.02em}
+  .not p{font-size:15px;color:var(--ink2)}
 
   /* ---------- manifesto ---------- */
-  .manifesto{padding:130px 0}
-  .manifesto .wrap{max-width:820px}
-  .manifesto p{font-family:'Instrument Serif';font-size:clamp(24px,3.1vw,33px);line-height:1.42;color:var(--ink2);letter-spacing:-.005em}
-  .manifesto p+p{margin-top:30px}
-  .manifesto em{font-style:italic;color:var(--saffron-deep)}
-  .dropcap::first-letter{font-size:4.6em;line-height:.8;float:left;margin:10px 16px 0 0;color:var(--saffron-deep)}
+  .manifesto{padding:126px 0}
+  .manifesto .wrap{max-width:840px}
+  .manifesto p{font-family:'Bricolage Grotesque';font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.44;color:var(--ink2);letter-spacing:-.015em}
+  .manifesto p+p{margin-top:28px}
+  .manifesto .sit{color:var(--saffron-deep);font-size:1.06em}
+  .manifesto .grn{color:var(--green);font-weight:600}
+  .dropcap::first-letter{font-family:'Instrument Serif';font-style:italic;font-size:4.5em;line-height:.78;float:left;margin:12px 18px 0 0;color:var(--saffron-deep)}
 
   /* ---------- makers ---------- */
-  .makers{padding:20px 0 130px}
-  .makers-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-bottom:10px}
-  .makers-head h3{font-family:'Instrument Serif';font-weight:400;font-size:clamp(32px,4vw,48px);letter-spacing:-.015em;max-width:17ch;margin-top:22px}
-  .makers-head h3 em{font-style:italic;color:var(--saffron-deep)}
+  .makers{padding:16px 0 126px}
+  .makers-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px}
+  .makers-head h3{font-size:clamp(30px,3.9vw,46px);max-width:18ch;margin-top:22px}
   .makers-head p{color:var(--muted);font-size:15.5px;max-width:32ch}
   .mk-list{margin-top:34px;border-top:1px solid var(--line)}
   .mk{display:grid;grid-template-columns:auto 1fr auto auto;gap:22px;align-items:center;
     padding:26px 10px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;cursor:default}
   .mk::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--saffron-soft),transparent 70%);
-    transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1);z-index:0}
+    transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .mk:nth-child(even)::before{background:linear-gradient(90deg,var(--green-soft),transparent 70%)}
   .mk:hover::before{transform:scaleX(1)}
-  .mk>*{position:relative;z-index:1}
-  .mk .idx{font-family:'Space Grotesk';font-size:12.5px;color:var(--saffron-deep)}
-  .mk .who{font-family:'Instrument Serif';font-style:italic;font-size:clamp(24px,3.2vw,34px);letter-spacing:-.01em;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .mk>*{position:relative}
+  .mk .idx{font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;color:var(--saffron-deep)}
+  .mk:nth-child(even) .idx{color:var(--green)}
+  .mk .who{font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(22px,3vw,32px);letter-spacing:-.025em;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
   .mk:hover .who{transform:translateX(12px)}
   .mk .what{font-size:14.5px;color:var(--muted);text-align:right;max-width:30ch}
   .mk .go-arr{font-size:20px;color:var(--saffron-deep);opacity:0;transform:translateX(-8px);transition:all .4s}
+  .mk:nth-child(even) .go-arr{color:var(--green)}
   .mk:hover .go-arr{opacity:1;transform:none}
   @media(max-width:680px){.mk{grid-template-columns:auto 1fr auto}.mk .what{display:none}}
 
-  /* ---------- quote ---------- */
-  .quote{background:var(--dark);color:var(--cream);padding:clamp(100px,13vw,160px) 0;position:relative;overflow:hidden}
-  .quote::before{content:"";position:absolute;width:640px;height:640px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,138,61,.16),transparent 65%);top:-280px;right:-160px}
-  .quote .wrap{max-width:1000px;position:relative}
-  .quote blockquote{font-family:'Instrument Serif';font-size:clamp(32px,5vw,58px);line-height:1.14;letter-spacing:-.018em}
-  .quote blockquote em{font-style:italic;color:var(--saffron)}
-  .quote .by{margin-top:34px;font-family:'Space Grotesk';font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#8f8574}
+  /* ---------- sellers band ---------- */
+  .sellers{background:var(--green);color:#F2F7F1;padding:clamp(90px,11vw,140px) 0;position:relative;overflow:hidden}
+  .sellers::before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,122,47,.18),transparent 62%);bottom:-340px;left:-200px}
+  .sellers .grid{display:grid;gap:54px;position:relative}
+  @media(min-width:960px){.sellers .grid{grid-template-columns:1fr 1fr;gap:40px;align-items:center}}
+  .sellers h3{font-size:clamp(32px,4.4vw,54px);color:#fff}
+  .sellers h3 .sit{color:#FFB07A}
+  .sellers .lead{margin-top:18px;color:#C9D8C9;font-size:16.5px;max-width:40ch}
+  .sellers .klabel{color:#FFB07A}.sellers .klabel::before{background:var(--saffron)}
+  .s-benefits{display:grid;gap:12px}
+  .ben{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px 26px;
+    display:flex;gap:18px;align-items:flex-start;transition:all .35s cubic-bezier(.2,.8,.2,1)}
+  .ben:hover{background:rgba(255,255,255,.1);transform:translateX(8px)}
+  .ben .ic{width:44px;height:44px;border-radius:13px;background:var(--saffron);display:grid;place-items:center;flex:none;color:#221000}
+  .ben h5{font-family:'Bricolage Grotesque';font-weight:700;font-size:17.5px;letter-spacing:-.01em;color:#fff}
+  .ben p{font-size:14.5px;color:#BFCFBF;margin-top:4px}
+  .sellers .btn{margin-top:30px}
 
   /* ---------- how ---------- */
-  .how{padding:130px 0}
-  .how h3{font-family:'Instrument Serif';font-weight:400;font-size:clamp(32px,4.2vw,50px);letter-spacing:-.015em;margin-top:22px}
-  .how h3 em{font-style:italic;color:var(--saffron-deep)}
+  .how{padding:126px 0 40px}
+  .how h3{font-size:clamp(30px,4vw,48px);margin-top:22px}
   .how .lead{color:var(--muted);max-width:42ch;margin-top:12px;font-size:16px}
-  .steps{margin-top:64px;display:grid;gap:16px}
+  .steps{margin-top:60px;display:grid;gap:16px}
   @media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr);gap:20px}}
-  .step{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:36px 32px 40px;position:relative;overflow:hidden;
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:36px 32px 40px;position:relative;overflow:hidden;
     transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
-  .step:hover{transform:translateY(-8px);box-shadow:0 30px 54px -28px rgba(40,26,12,.28)}
-  .step::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--saffron),var(--saffron-deep));
+  .step:hover{transform:translateY(-8px);box-shadow:0 30px 54px -28px rgba(40,26,12,.25)}
+  .step::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--saffron);
     transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .step:nth-child(2)::after{background:var(--green)}
   .step:hover::after{transform:scaleX(1)}
-  .step .n{font-family:'Instrument Serif';font-style:italic;font-size:56px;line-height:1;color:var(--saffron);opacity:.9}
-  .step h4{font-size:20px;font-weight:600;margin:20px 0 10px;letter-spacing:-.01em}
+  .step .n{font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;letter-spacing:.1em;color:var(--saffron-deep);
+    display:inline-block;padding:8px 15px;border-radius:100px;background:var(--saffron-soft)}
+  .step:nth-child(2) .n{color:var(--green);background:var(--green-soft)}
+  .step h4{font-family:'Bricolage Grotesque';font-weight:700;font-size:21px;margin:22px 0 10px;letter-spacing:-.02em}
   .step p{color:var(--ink2);font-size:15.5px}
 
-  /* ---------- principles ---------- */
-  .princ{padding:0 0 130px}
-  .princ .row{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
-  .pill{font-size:15px;font-weight:500;padding:13px 20px;border-radius:100px;border:1.5px solid var(--line);
-    background:var(--paper);transition:all .3s cubic-bezier(.2,.8,.2,1);cursor:default}
-  .pill:hover{border-color:var(--saffron);color:var(--saffron-deep);transform:translateY(-4px) rotate(-1deg);
-    box-shadow:0 12px 24px -12px rgba(232,104,26,.35)}
+  /* ---------- faq ---------- */
+  .faq{padding:100px 0 126px}
+  .faq .wrap{max-width:840px}
+  .faq h3{font-size:clamp(28px,3.6vw,42px);margin-top:22px}
+  .qa-list{margin-top:44px;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line)}
+  summary{list-style:none;cursor:pointer;padding:26px 6px;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    font-family:'Bricolage Grotesque';font-weight:600;font-size:clamp(17px,2vw,20px);letter-spacing:-.015em;transition:color .3s}
+  summary::-webkit-details-marker{display:none}
+  summary:hover{color:var(--saffron-deep)}
+  .plus{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;flex:none;
+    font-family:'Bricolage Grotesque';font-weight:500;font-size:19px;transition:all .35s cubic-bezier(.2,.8,.2,1)}
+  details[open] .plus{background:var(--saffron);border-color:var(--saffron);color:#221000;transform:rotate(45deg)}
+  .qa-body{padding:0 6px 28px;color:var(--ink2);font-size:15.5px;max-width:62ch}
 
   /* ---------- cta ---------- */
-  .cta{background:linear-gradient(160deg,var(--dark2),var(--dark) 60%);color:var(--cream);
-    padding:clamp(90px,12vw,150px) 0;text-align:center;position:relative;overflow:hidden}
-  .cta::before{content:"";position:absolute;width:900px;height:500px;left:50%;top:-260px;transform:translateX(-50%);
-    background:radial-gradient(ellipse,rgba(255,138,61,.22),transparent 65%)}
-  .cta .wrap{position:relative;max-width:820px}
-  .cta h2{font-family:'Instrument Serif';font-weight:400;font-size:clamp(40px,6.4vw,80px);line-height:1.02;letter-spacing:-.022em}
-  .cta h2 em{font-style:italic;color:var(--saffron)}
+  .cta{background:var(--dark);color:var(--cream);padding:clamp(90px,12vw,150px) 0;text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;width:900px;height:520px;left:50%;top:-260px;transform:translateX(-50%);
+    background:radial-gradient(ellipse,rgba(255,122,47,.24),transparent 65%)}
+  .cta .wrap{position:relative;max-width:840px}
+  .cta h2{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(38px,6.2vw,76px);line-height:1;letter-spacing:-.03em}
+  .cta h2 .sit{color:var(--saffron);font-size:1.05em}
   .cta .lead{color:#B9AE9D;max-width:44ch;margin:24px auto 0;font-size:16.5px}
-  .form{margin:44px auto 0;max-width:520px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .form{margin:44px auto 0;max-width:530px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   .form input{flex:1;min-width:230px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.16);
-    color:var(--cream);padding:17px 22px;border-radius:100px;font-size:15px;font-family:inherit;outline:none;
-    transition:border-color .3s,background .3s}
+    color:var(--cream);padding:17px 22px;border-radius:100px;font-size:15px;font-family:inherit;outline:none;transition:all .3s}
   .form input::placeholder{color:#7d7466}
-  .form input:focus{border-color:var(--saffron);background:rgba(255,138,61,.06)}
-  .seller{margin-top:24px;font-size:15px;color:#B9AE9D}
-  .seller a{color:var(--saffron);font-weight:600;position:relative}
-  .seller a::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1.5px;background:var(--saffron);
+  .form input:focus{border-color:var(--saffron);background:rgba(255,122,47,.07)}
+  .seller-l{margin-top:24px;font-size:15px;color:#B9AE9D}
+  .seller-l a{color:var(--saffron);font-weight:600;position:relative}
+  .seller-l a::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1.5px;background:var(--saffron);
     transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-  .seller a:hover::after{transform:scaleX(1);transform-origin:left}
+  .seller-l a:hover::after{transform:scaleX(1);transform-origin:left}
 
-  /* ---------- footer ---------- */
   footer{background:var(--dark);color:#877d6d;padding:44px 0 60px;border-top:1px solid rgba(255,255,255,.07)}
   .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-  .foot-brand{display:flex;align-items:center;gap:11px;color:var(--cream);font-family:'Instrument Serif';font-size:23px}
-  .foot-note{font-family:'Space Grotesk';font-size:12.5px;letter-spacing:.06em}
+  .foot-brand{display:flex;align-items:center;gap:11px;color:var(--cream);font-family:'Bricolage Grotesque';font-weight:700;font-size:21px;letter-spacing:-.02em}
+  .foot-note{font-size:13px;letter-spacing:.04em}
   .foot-note a{color:var(--saffron)}
 </style>
 </head>
@@ -267,15 +290,15 @@
     <a class="brand" href="#top">
       <svg class="mark" viewBox="0 0 44 30" fill="none" aria-hidden="true">
         <defs><clipPath id="nc-nav"><circle cx="15" cy="15" r="11"/></clipPath></defs>
-        <circle cx="29" cy="15" r="11" fill="#FF8A3D" clip-path="url(#nc-nav)"/>
-        <circle cx="15" cy="15" r="11" stroke="#12100D" stroke-width="2" fill="none"/>
-        <circle cx="29" cy="15" r="11" stroke="#12100D" stroke-width="2" fill="none"/>
+        <circle cx="29" cy="15" r="11" fill="#FF7A2F" clip-path="url(#nc-nav)"/>
+        <circle cx="15" cy="15" r="11" stroke="#141210" stroke-width="2" fill="none"/>
+        <circle cx="29" cy="15" r="11" stroke="#141210" stroke-width="2" fill="none"/>
       </svg>
       Neario
     </a>
     <div class="nav-right">
       <span class="pre">Coming soon</span>
-      <a href="#join" class="btn btn-primary btn-sm"><span>Get early access</span></a>
+      <a href="#join" class="btn btn-dark btn-sm"><span>Get early access</span></a>
     </div>
   </div>
 </nav>
@@ -285,16 +308,16 @@
     <div class="eyebrow"><span class="dot"></span> The discovery layer for local commerce</div>
     <h1 class="head">
       <span class="h-line"><span>The best things in</span></span>
-      <span class="h-line"><span>your locality <em>never</em></span></span>
-      <span class="h-line"><span><em>made it online.</em></span></span>
+      <span class="h-line"><span>your locality never</span></span>
+      <span class="h-line"><span>made it <span class="sit">online.</span></span></span>
     </h1>
-    <p class="sub">Neario puts the home bakers, tiffin kitchens and independent makers around you on the map — and lets you buy from them, directly.</p>
+    <p class="sub">Neario puts the <b>home bakers, tiffin kitchens and independent makers</b> around you on the map — and lets you buy from them, directly.</p>
     <div class="hero-actions">
       <a href="#join" class="btn btn-saffron"><span>Get early access</span> <span class="arr">→</span></a>
-      <a href="#what" class="btn btn-ghost">See how it works</a>
+      <a href="#how" class="btn btn-ghost"><span>See how it works</span></a>
     </div>
     <div class="hero-foot">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF8A3D" stroke-width="2.2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1C4A38" stroke-width="2.2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
       Everything <b>right in your locality.</b>
     </div>
   </div>
@@ -308,7 +331,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
             YOUR LOCALITY
           </div>
-          <div class="s-h">Makers &amp; shops <em>around you</em> today</div>
+          <div class="s-h">Makers &amp; shops around you today</div>
           <div class="s-search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
             <span id="typed">home bakes</span><span class="type-caret"></span>
@@ -336,7 +359,7 @@
             <span class="heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.5-1.6 3-3.5 3-5.7A4.3 4.3 0 0 0 12 6 4.3 4.3 0 0 0 2 8.3C2 12 7 16.4 12 20c2-1.5 4.7-3.6 7-6Z"/></svg></span></div>
         </div>
         <div class="toast">
-          <div class="t-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="t-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#221000" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div><b>Order confirmed</b><span>Meera starts baking at 4 pm</span></div>
         </div>
       </div>
@@ -346,37 +369,37 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="m-track" id="mtrack">
-    <span class="m-item">Home bakes <i>✦</i></span><span class="m-item">Daily tiffin <i>✦</i></span>
-    <span class="m-item"><em>Pickles &amp; preserves</em> <i>✦</i></span><span class="m-item">Handmade craft <i>✦</i></span>
-    <span class="m-item">Corner stores <i>✦</i></span><span class="m-item"><em>Fresh flowers</em> <i>✦</i></span>
-    <span class="m-item">Boutique tailors <i>✦</i></span><span class="m-item">Homemade snacks <i>✦</i></span>
+    <span class="m-item">Home bakes <i>✦</i></span><span class="m-item gr">Daily tiffin <i>✦</i></span>
+    <span class="m-item">Pickles &amp; preserves <i>✦</i></span><span class="m-item gr">Handmade craft <i>✦</i></span>
+    <span class="m-item">Corner stores <i>✦</i></span><span class="m-item gr">Fresh flowers <i>✦</i></span>
+    <span class="m-item">Boutique tailors <i>✦</i></span><span class="m-item gr">Homemade snacks <i>✦</i></span>
   </div>
 </div>
 
 <section class="define wrap" id="what">
   <div class="reveal">
     <span class="klabel">What Neario is</span>
-    <h2>The independent businesses around you, finally <em class="uline">discoverable</em> — and a tap away.</h2>
+    <h2 class="sec">The independent businesses around you, finally <span class="uline">discoverable</span> — and a tap away.</h2>
   </div>
   <div class="nots reveal">
-    <div class="not"><div class="x">✕ not</div><h4>Quick commerce</h4><p>No dark stores. No 10-minute anxiety. No warehouse full of the same forty things everyone sells.</p></div>
-    <div class="not"><div class="x">✕ not</div><h4>Another marketplace</h4><p>No faceless resellers racing to the cheapest price. Real people, real kitchens, real shelves.</p></div>
-    <div class="not"><div class="x">✕ not</div><h4>A social feed</h4><p>Nothing to doomscroll. Every screen exists to help you find something good, close by.</p></div>
+    <div class="not c1"><span class="x">Not this</span><h4>Quick commerce</h4><p>No dark stores. No 10-minute anxiety. No warehouse full of the same forty things everyone sells.</p></div>
+    <div class="not c2"><span class="x">Not this</span><h4>Another marketplace</h4><p>No faceless resellers racing to the cheapest price. Real people, real kitchens, real shelves.</p></div>
+    <div class="not c3"><span class="x">Not this</span><h4>A social feed</h4><p>Nothing to doomscroll. Every screen exists to help you find something good, close by.</p></div>
   </div>
 </section>
 
 <section class="manifesto">
   <div class="wrap reveal">
     <p class="dropcap">Every locality is quietly full of brilliant little businesses. The aunty whose pickles your whole lane swears by. The home baker running on a stretched-thin WhatsApp. The potter two turns away you've simply never found.</p>
-    <p>They don't need a warehouse or a delivery fleet. They need to be <em>found</em> — by the people already living minutes from their door. That's what we're building. <em>Neario is the layer that puts your locality's makers on the map.</em></p>
+    <p>They don't need a warehouse or a delivery fleet. They need to be <span class="grn">found</span> — by the people already living minutes from their door. That's what we're building. <span class="sit">Neario is the layer that puts your locality's makers on the map.</span></p>
   </div>
 </section>
 
 <section class="makers wrap">
   <div class="makers-head reveal">
     <div>
-      <span class="klabel">Who you'll find</span>
-      <h3>The people your locality <em>already trusts.</em></h3>
+      <span class="klabel gr">Who you'll find</span>
+      <h3 class="sec">The people your locality <span class="sit sit-acc">already trusts.</span></h3>
     </div>
     <p>A storefront they own, discovered by closeness — never by who paid for the top slot.</p>
   </div>
@@ -389,47 +412,80 @@
   </div>
 </section>
 
-<section class="quote">
-  <div class="wrap reveal">
-    <blockquote>Trust over discounts. <em>Closeness</em> over clout. A storefront the seller owns — and a buyer who can <em>finally find it.</em></blockquote>
-    <div class="by">— The Neario principle</div>
+<section class="sellers" id="sellers">
+  <div class="wrap grid">
+    <div class="reveal">
+      <span class="klabel">For sellers</span>
+      <h3 class="sec" style="margin-top:22px">Your craft deserves more than a <span class="sit">WhatsApp status.</span></h3>
+      <p class="lead">If you make or sell something your locality should know about, Neario gives you a real storefront — without asking you to become a tech company.</p>
+      <a href="#join" class="btn btn-green"><span>Join the seller waitlist</span> <span class="arr">→</span></a>
+    </div>
+    <div class="s-benefits reveal">
+      <div class="ben">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9.5 12 4l9 5.5M5 10v9h14v-9"/><path d="M9 19v-5h6v5"/></svg></div>
+        <div><h5>A storefront you own</h5><p>Your products, your photos, your story — not a row in someone else's catalogue.</p></div>
+      </div>
+      <div class="ben">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+        <div><h5>Found by neighbours, not algorithms</h5><p>Buyers discover you because you're close — not because you outbid someone.</p></div>
+      </div>
+      <div class="ben">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div><h5>Deliver on your terms</h5><p>You know your lanes better than any fleet. You set the range, you make the drop.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="how wrap" id="how">
   <div class="reveal">
     <span class="klabel">How it works</span>
-    <h3>Three taps. <em>No middle layer.</em></h3>
+    <h3 class="sec">Three taps. <span class="sit sit-acc">No middle layer.</span></h3>
     <p class="lead">From discovery to doorstep — straight between you and the maker.</p>
   </div>
   <div class="steps">
-    <div class="step reveal"><div class="n">01</div><h4>Discover what's around</h4><p>Open Neario and see the makers and shops in your locality — ranked by closeness, never by who bid highest.</p></div>
-    <div class="step reveal"><div class="n">02</div><h4>Order from the maker</h4><p>Buy from their storefront, on their terms. No reseller in the middle, no warehouse in between.</p></div>
-    <div class="step reveal"><div class="n">03</div><h4>They bring it over</h4><p>The seller delivers it themselves — direct, local and personal. The way the lane has always worked.</p></div>
+    <div class="step reveal"><span class="n">STEP 01</span><h4>Discover what's around</h4><p>Open Neario and see the makers and shops in your locality — ranked by closeness, never by who bid highest.</p></div>
+    <div class="step reveal"><span class="n">STEP 02</span><h4>Order from the maker</h4><p>Buy from their storefront, on their terms. No reseller in the middle, no warehouse in between.</p></div>
+    <div class="step reveal"><span class="n">STEP 03</span><h4>They bring it over</h4><p>The seller delivers it themselves — direct, local and personal. The way the lane has always worked.</p></div>
   </div>
 </section>
 
-<section class="princ wrap">
-  <div class="reveal">
-    <span class="klabel">What we stand on</span>
-    <div class="row">
-      <span class="pill">Mobile-first</span><span class="pill">Location-first</span>
-      <span class="pill">Trust over discounts</span><span class="pill">Sellers own their storefront</span>
-      <span class="pill">Direct, maker → you</span><span class="pill">No warehouses, no fleet</span>
-      <span class="pill">Simplicity over features</span>
+<section class="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="klabel gr">Good questions</span>
+      <h3 class="sec">Things people ask us.</h3>
+    </div>
+    <div class="qa-list reveal">
+      <details>
+        <summary>When is Neario launching? <span class="plus">+</span></summary>
+        <div class="qa-body">Soon — locality by locality, so every area launches with real sellers already on board. Early-access members get in first when their area goes live.</div>
+      </details>
+      <details>
+        <summary>Which cities are you starting with? <span class="plus">+</span></summary>
+        <div class="qa-body">We're deciding launch areas based on where sellers and buyers sign up — so the honest answer is: wherever the waitlist is loudest. Join it, and bring your locality with you.</div>
+      </details>
+      <details>
+        <summary>How is this different from Swiggy, Zepto or Amazon? <span class="plus">+</span></summary>
+        <div class="qa-body">Those platforms move inventory through warehouses and fleets. Neario doesn't hold stock, run delivery, or sell anything itself — it connects you directly to independent sellers near you, who deliver themselves. Discovery, not logistics.</div>
+      </details>
+      <details>
+        <summary>I sell from home. What do I need to join? <span class="plus">+</span></summary>
+        <div class="qa-body">Just what you already have — your products, your phone, and your locality. Join the seller waitlist and we'll walk you through setting up your storefront when your area opens.</div>
+      </details>
     </div>
   </div>
 </section>
 
 <section class="cta" id="join">
   <div class="wrap reveal">
-    <h2>Find what's <em>already</em><br>around you.</h2>
+    <h2>Find what's <span class="sit">already</span><br>around you.</h2>
     <p class="lead">Neario launches soon, locality by locality. Join early access and we'll bring your area online first.</p>
     <form class="form" onsubmit="event.preventDefault();const i=this.querySelector('input');i.value='';i.placeholder='You’re on the list ✦ See you soon.';">
       <input type="email" required placeholder="your@email.com" aria-label="Email" />
       <button class="btn btn-saffron" type="submit"><span>Join early access</span> <span class="arr">→</span></button>
     </form>
-    <p class="seller">Make something your locality should know about? <a href="#join">Join the seller waitlist</a></p>
+    <p class="seller-l">Make something your locality should know about? <a href="#join">Join the seller waitlist</a></p>
   </div>
 </section>
 
@@ -438,9 +494,9 @@
     <div class="foot-brand">
       <svg class="mark" viewBox="0 0 44 30" fill="none" aria-hidden="true">
         <defs><clipPath id="nc-foot"><circle cx="15" cy="15" r="11"/></clipPath></defs>
-        <circle cx="29" cy="15" r="11" fill="#FF8A3D" clip-path="url(#nc-foot)"/>
-        <circle cx="15" cy="15" r="11" stroke="#FAF7F2" stroke-width="2" fill="none"/>
-        <circle cx="29" cy="15" r="11" stroke="#FAF7F2" stroke-width="2" fill="none"/>
+        <circle cx="29" cy="15" r="11" fill="#FF7A2F" clip-path="url(#nc-foot)"/>
+        <circle cx="15" cy="15" r="11" stroke="#FAF6EF" stroke-width="2" fill="none"/>
+        <circle cx="29" cy="15" r="11" stroke="#FAF6EF" stroke-width="2" fill="none"/>
       </svg>
       Neario
     </div>
@@ -449,31 +505,34 @@
 </footer>
 
 <script>
-  // nav
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>14),{passive:true});
 
-  // marquee duplicate for seamless loop
   const mt=document.getElementById('mtrack');
   mt.innerHTML+=mt.innerHTML;
 
-  // typed search
   const words=['home bakes','daily tiffin','mango pickle','handmade mugs','fresh flowers'];
   const typed=document.getElementById('typed');
   let wi=0,ci=words[0].length,dir=-1;
   setInterval(()=>{
+    if(dir===0)return;
     ci+=dir;
     if(ci<0){dir=1;wi=(wi+1)%words.length;ci=0;}
-    else if(ci>words[wi].length){dir=-1;ci=words[wi].length;setTimeoutSafe();}
+    else if(ci>words[wi].length){ci=words[wi].length;dir=0;setTimeout(()=>dir=-1,1600);}
     typed.textContent=words[wi].slice(0,ci);
   },110);
-  function setTimeoutSafe(){dir=0;setTimeout(()=>dir=-1,1600);}
 
-  // reveals
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
   }),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%4,3)*70)+'ms';io.observe(el);});
+
+  // close other FAQs when one opens
+  document.querySelectorAll('details').forEach(d=>{
+    d.addEventListener('toggle',()=>{
+      if(d.open)document.querySelectorAll('details').forEach(o=>{if(o!==d)o.open=false;});
+    });
+  });
 </script>
 </body>
 </html>
