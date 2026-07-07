@@ -6,7 +6,7 @@
 <title>Neario — the discovery layer for local commerce</title>
 <meta name="description" content="Neario puts the gift makers, custom bakers, artisans and home businesses around you on the map — and lets you buy from them directly. Coming soon." />
 <meta name="theme-color" content="#FAF6EF" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141210'/%3E%3Cpath d='M20 46 V27 Q20 16 32 16 Q44 16 44 27 V46' stroke='%23FAF6EF' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='20' cy='46' r='5.5' fill='%23FF7A2F'/%3E%3Ccircle cx='44' cy='46' r='5.5' fill='%237BB661'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231C4A38'/%3E%3Cpath d='M19 48 V27 Q19 15 32 15 Q45 15 45 27 V48' stroke='%23FAF6EF' stroke-width='9' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='32' cy='38' r='6' fill='%23FF7A2F'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -36,7 +36,9 @@
   nav.scrolled{background:rgba(250,246,239,.85);backdrop-filter:blur(14px) saturate(1.5);border-color:var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:78px}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Bricolage Grotesque';font-weight:700;font-size:24px;letter-spacing:-.02em}
-  .mark{width:31px;height:26px;flex:none}
+  .mark{width:27px;height:27px;flex:none}
+  .iw{position:relative;display:inline-block}
+  .idot{position:absolute;left:50%;transform:translateX(-50%);top:.09em;width:.13em;height:.13em;border-radius:50%;background:var(--saffron)}
   .nav-right{display:flex;align-items:center;gap:18px}
   .pre{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:700;
     border:1.5px solid rgba(28,74,56,.35);border-radius:100px;padding:6px 13px}
@@ -374,12 +376,11 @@
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#top">
-      <svg class="mark" viewBox="0 0 40 34" fill="none" aria-hidden="true">
-        <path d="M8 29 V14 Q8 6.5 20 6.5 Q32 6.5 32 14 V29" stroke="#141210" stroke-width="3.6" stroke-linecap="round"/>
-        <circle cx="8" cy="29" r="4" fill="#FF7A2F"/>
-        <circle cx="32" cy="29" r="4" fill="#1C4A38"/>
+      <svg class="mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <path d="M9 31 V16 Q9 9 18 9 Q27 9 27 16 V31" stroke="#141210" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="18" cy="24.5" r="4" fill="#FF7A2F"/>
       </svg>
-      Neario
+      Near<span class="iw">ı<span class="idot"></span></span>o
     </a>
     <div class="nav-right">
       <span class="pre">Coming soon</span>
@@ -659,12 +660,11 @@
 <footer>
   <div class="wrap foot-in">
     <div class="foot-brand">
-      <svg class="mark" viewBox="0 0 40 34" fill="none" aria-hidden="true">
-        <path d="M8 29 V14 Q8 6.5 20 6.5 Q32 6.5 32 14 V29" stroke="#FAF6EF" stroke-width="3.6" stroke-linecap="round"/>
-        <circle cx="8" cy="29" r="4" fill="#FF7A2F"/>
-        <circle cx="32" cy="29" r="4" fill="#7BB661"/>
+      <svg class="mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <path d="M9 31 V16 Q9 9 18 9 Q27 9 27 16 V31" stroke="#FAF6EF" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="18" cy="24.5" r="4" fill="#FF7A2F"/>
       </svg>
-      Neario
+      Near<span class="iw">ı<span class="idot"></span></span>o
     </div>
     <div class="foot-note">The discovery layer for local commerce · <a href="https://neario.in" target="_blank" rel="noopener noreferrer">neario.in</a> · Coming soon</div>
   </div>
